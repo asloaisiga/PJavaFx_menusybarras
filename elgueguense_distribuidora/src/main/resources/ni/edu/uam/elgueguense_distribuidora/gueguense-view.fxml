@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" spacing="12.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ni.edu.uam.elgueguense_distribuidora.controllers.InventarioController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="Archivo">
+                    <items>
+                        <MenuItem fx:id="menuNuevo" mnemonicParsing="false" onAction="#nuevoProducto" text="Nuevo" />
+                        <MenuItem mnemonicParsing="false" onAction="#limpiarFormulario" text="Limpiar" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="menuSalir" mnemonicParsing="false" onAction="#salir" text="Salir" />
+
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Producto">
+                    <items>
+                        <MenuItem fx:id="menuGuardar" mnemonicParsing="false" onAction="#guardarProducto" text="Guardar" />
+                        <MenuItem mnemonicParsing="false" onAction="#editarProducto" text="Editar" />
+                        <MenuItem mnemonicParsing="false" onAction="#eliminarProducto" text="Eliminar" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Ayuda">
+                    <items> <MenuItem mnemonicParsing="false" onAction="#acercaDe" text="Acerca de" /></items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <ToolBar>
+            <items>
+                <Button mnemonicParsing="false" onAction="#nuevoProducto" text="Nuevo" />
+                <Button mnemonicParsing="false" onAction="#guardarProducto" text="Guardar" />
+                <Button mnemonicParsing="false" onAction="#editarProducto" text="Editar" />
+                <Button mnemonicParsing="false" onAction="#eliminarProducto" text="Eliminar" />
+            </items>
+        </ToolBar>
+        <Label text="INVENTARIO DE PRODUCTOS"> <font> <Font size="22.0" /> </font> <VBox.margin><Insets left="20.0" top="5.0" /></VBox.margin> </Label>
+        <Label text="Distribuidora El Güegüense">
+            <font><Font size="15.0" /></font>
+            <VBox.margin><Insets left="20.0" /></VBox.margin>
+        </Label>
+        <GridPane hgap="12.0" vgap="12.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" minWidth="100.0" prefWidth="120.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="180.0" prefWidth="250.0" />
+                <ColumnConstraints halignment="RIGHT" minWidth="100.0" prefWidth="120.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="180.0" prefWidth="250.0" />
+            </columnConstraints>
+
+            <children>
+                <Label text="Código:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="txtCodigo" promptText="Ej: P001" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Label text="Nombre:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                <TextField fx:id="txtNombre" promptText="Nombre del producto" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                <Label text="Categoría:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <ComboBox fx:id="cbCategoria" maxWidth="Infinity" promptText="Seleccione una categoría" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label text="Precio:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <TextField fx:id="txtPrecio" promptText="Ej: 150.00" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                <Label text="Existencia:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="txtExistencia" promptText="Cantidad disponible" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </children>
+
+            <VBox.margin><Insets left="20.0" right="20.0" /></VBox.margin>
+        </GridPane>
+        <TableView fx:id="tbProductos" prefHeight="300.0">
+            <columns>
+                <TableColumn fx:id="colCodigo" prefWidth="110.0" text="Código" />
+                <TableColumn fx:id="colNombre" prefWidth="190.0" text="Nombre" />
+                <TableColumn fx:id="colCategoria" prefWidth="160.0" text="Categoría" />
+                <TableColumn fx:id="colPrecio" prefWidth="130.0" text="Precio" />
+                <TableColumn fx:id="colExistencia" prefWidth="130.0" text="Existencia" />
+            </columns>
+            <contextMenu>
+                <ContextMenu>
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#editarProducto" text="Editar producto" />
+                        <MenuItem mnemonicParsing="false" onAction="#eliminarProducto" text="Eliminar producto" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#verDetalle" text="Ver detalle" />
+                    </items>
+                </ContextMenu>
+            </contextMenu>
+            <VBox.margin><Insets left="20.0" right="20.0" /></VBox.margin>
+        </TableView>
+        <Label fx:id="lblEstado" text="Listo para administrar productos.">
+            <VBox.margin><Insets bottom="15.0" left="20.0" right="20.0" />
+            </VBox.margin>
+        </Label>
+    </children>
+</VBox>
