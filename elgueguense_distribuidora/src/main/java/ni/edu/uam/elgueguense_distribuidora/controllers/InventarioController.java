@@ -279,9 +279,7 @@ public class InventarioController {
     }
 
 
-    private Producto buscarProducto(
-            String codigo) {
-
+    private Producto buscarProducto(String codigo) {
         for (Producto producto : inventarioDao.obtenerProductos()) {
 
             if (producto.getCodigo().equalsIgnoreCase(codigo)) {
@@ -293,7 +291,6 @@ public class InventarioController {
 
 
     private boolean validarCampos() {
-
         if (txtCodigo.getText().isBlank()
                 || txtNombre.getText().isBlank()
                 || cbCategoria.getValue() == null
@@ -303,21 +300,16 @@ public class InventarioController {
             mostrarAlerta(
                     Alert.AlertType.WARNING, "Campos incompletos", "Complete todos los datos del producto."
             );
-
             return false;
         }
 
         try {
 
             double precio =
-                    Double.parseDouble(
-                            txtPrecio.getText().trim()
-                    );
+                    Double.parseDouble(txtPrecio.getText().trim());
 
             int existencia =
-                    Integer.parseInt(
-                            txtExistencia.getText().trim()
-                    );
+                    Integer.parseInt(txtExistencia.getText().trim());
 
             if (precio <= 0) {
 
@@ -338,22 +330,16 @@ public class InventarioController {
             }
 
         } catch (NumberFormatException e) {
-
             mostrarAlerta(
-                    Alert.AlertType.ERROR,
-                    "Datos incorrectos",
-                    "Ingrese un precio y existencia válidos."
+                    Alert.AlertType.ERROR, "Datos incorrectos", "Ingrese un precio y existencia válidos."
             );
-
             return false;
         }
-
         return true;
     }
 
 
-    private void sinSeleccion(
-            String accion) {
+    private void sinSeleccion(String accion) {
         mostrarAlerta(Alert.AlertType.WARNING, "Sin selección", "Seleccione un producto antes de "
                 + accion + ".");
         lblEstado.setText("No hay ningún producto seleccionado.");
@@ -367,7 +353,6 @@ public class InventarioController {
         txtPrecio.clear();
         txtExistencia.clear();
     }
-
 
     private void mostrarAlerta(
             Alert.AlertType tipo,
